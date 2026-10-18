@@ -1,27 +1,46 @@
 {
   "javascript": [
     {
-      "file": "src/server/index.js",
+      "file": "src/Peacock/Server/index.js",
       "canonicalEquivalent": true,
       "symbols": 1472,
       "parts": 7
     },
     {
-      "file": "src/webui/assets/app.js",
+      "file": "src/Peacock/WebUI/assets/app.js",
       "canonicalEquivalent": true,
       "symbols": 689,
       "parts": 3
     }
   ],
-  "layout": "src, data, config, vendor/original, dist/Peacock",
-  "resourcePackagesVerified": 133,
-  "existingSettingsPreserved": true,
-  "existingUserdataPreserved": true,
-  "originalHashesVerified": 4319,
-  "patcherBuild": {
+  "singleCSharpProject": "src/Peacock/Peacock.csproj",
+  "entryPoint": "dist/Peacock/Peacock.exe",
+  "build": {
     "configuration": "Release",
     "errors": 0,
     "warnings": 2
   },
-  "applicationExecuted": false
+  "serverLifecycleTests": "passed",
+  "realServerHttpIntegration": "passed in isolated directory; no game patching",
+  "interactiveGuiTested": false,
+  "gameIntegrationTested": false,
+  "compiledServer": {
+    "format": "Node.js SEA with V8 code cache",
+    "platform": "win32-x64",
+    "nodeVersion": "22.18.0",
+    "inputsSha256": "56f7037dacfa88691b034ec3d23009d29653e6b6f2b34a1506f8a4b770ff1c86",
+    "executableSha256": "76034c2d8a0ab48d53d8b9b5d6d041a0e3e55c217466736c65ab72dac1d9b19e",
+    "executableBytes": 100221952
+  },
+  "embeddedResource": "Peacock.Server.bytes",
+  "extractedExecutableHashVerified": true,
+  "deploymentRequiresLooseServerJavaScript": false,
+  "deploymentRequiresSeparateNodeExecutable": false,
+  "compiledServerHttpIntegration": "passed in isolated directory",
+  "compiledServerCli": "passed",
+  "binLaunchAssetResolution": "passed",
+  "deployedAssetResolution": "passed",
+  "missingAssetsFailFast": "passed",
+  "fatalBootstrapFailFast": "passed",
+  "serverLogEncoding": "UTF-8"
 }

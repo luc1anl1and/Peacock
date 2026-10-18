@@ -20,3 +20,4 @@
 *.ico binary
 *.prp binary
 *.rpkg binary
+*.bytes binary

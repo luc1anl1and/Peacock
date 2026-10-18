@@ -25,10 +25,10 @@ function normalize(x) {
 }
 let results = [];
 for (const [original, recovered, label] of [
-  ["vendor/original/chunk0.js", "src/server/index.js", "server"],
+  ["vendor/original/chunk0.js", "src/Peacock/Server/index.js", "server"],
   [
     "vendor/original/webui/dist/assets/index-jGXSxClG.js",
-    "src/webui/assets/app.js",
+    "src/Peacock/WebUI/assets/app.js",
     "webui",
   ],
 ]) {

@@ -12,6 +12,19 @@ namespace HitmanPatcher;
 
 public class MainForm : Form, ILoggingProvider
 {
+	private bool patchingEnabled;
+
+	public void SetPatchingEnabled(bool enabled)
+	{
+		patchingEnabled = enabled;
+		buttonRepatch.Enabled = enabled;
+	}
+
+	public void UseLocalServer(int port)
+	{
+		SetSelectedServerHostname("127.0.0.1" + (port == 80 ? "" : ":" + port));
+		_currentSettings.patchOptions.UseHttp = true;
+	}
 	private static MainForm instance;
 
 	private static readonly Dictionary<string, string> servers = new Dictionary<string, string>
@@ -115,7 +128,7 @@ public class MainForm : Form, ILoggingProvider
 		timer.Interval = 1000;
 		timer.Tick += (object sender, EventArgs args) =>
 		{
-			MemoryPatcher.PatchAllProcesses(this, CurrentSettings.patchOptions);
+			if (patchingEnabled) MemoryPatcher.PatchAllProcesses(this, CurrentSettings.patchOptions);
 		};
 		timer.Enabled = true;
 		try
@@ -128,14 +141,14 @@ public class MainForm : Form, ILoggingProvider
 		}
 		updateTrayDomains();
 		ToggleTheme(CurrentSettings.darkModeEnabled);
-		log("Patcher ready");
+		log("Patcher ready; waiting for the local server.");
 		if (CurrentSettings.startInTray)
 		{
 			trayIcon.Visible = true;
 			WindowState = FormWindowState.Minimized;
 			Hide();
 			ShowInTaskbar = false;
-			trayIcon.ShowBalloonTip(5000, "Peacock Patcher", "The Peacock Patcher has been started in the tray.", ToolTipIcon.Info);
+			trayIcon.ShowBalloonTip(5000, "Peacock", "The Peacock Patcher has been started in the tray.", ToolTipIcon.Info);
 		}
 	}
 
@@ -154,6 +167,7 @@ public class MainForm : Form, ILoggingProvider
 		{
 			logListView.Items.Insert(0, $"[{DateTime.Now:HH:mm:ss}] - {arg}");
 		}
+		while (logListView.Items.Count > 1000) logListView.Items.RemoveAt(logListView.Items.Count - 1);
 	}
 
 	private void RePatchButton_Click(object sender, EventArgs e)
@@ -216,7 +230,7 @@ public class MainForm : Form, ILoggingProvider
 			Hide();
 			ShowInTaskbar = false;
 			trayIcon.Visible = true;
-			trayIcon.ShowBalloonTip(5000, "Peacock Patcher", "The Peacock Patcher has been minimized to the tray.", ToolTipIcon.Info);
+			trayIcon.ShowBalloonTip(5000, "Peacock", "The Peacock Patcher has been minimized to the tray.", ToolTipIcon.Info);
 		}
 		else
 		{
@@ -453,7 +467,7 @@ public class MainForm : Form, ILoggingProvider
 		this.novikovPictureBox.TabStop = false;
 		this.trayIcon.ContextMenuStrip = this.trayMenu;
 		this.trayIcon.Icon = HitmanPatcher.Resources.Icon;
-		this.trayIcon.Text = "Peacock Patcher";
+		this.trayIcon.Text = "Peacock";
 		this.trayIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.menuItemOpen_Click);
 		this.trayMenu.ImageScalingSize = new System.Drawing.Size(20, 20);
 		this.trayMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[4] { this.menuItemOpen, this.menuItemRepatch, this.domainsTrayMenu, this.menuItemExit });
@@ -462,7 +476,7 @@ public class MainForm : Form, ILoggingProvider
 		this.menuItemOpen.Font = new System.Drawing.Font("Segoe UI", 9f, System.Drawing.FontStyle.Bold);
 		this.menuItemOpen.Name = "menuItemOpen";
 		this.menuItemOpen.Size = new System.Drawing.Size(172, 24);
-		this.menuItemOpen.Text = "&Open Patcher";
+		this.menuItemOpen.Text = "&Open Peacock";
 		this.menuItemOpen.Click += new System.EventHandler(this.menuItemOpen_Click);
 		this.menuItemRepatch.Name = "menuItemRepatch";
 		this.menuItemRepatch.Size = new System.Drawing.Size(172, 24);
@@ -475,7 +489,7 @@ public class MainForm : Form, ILoggingProvider
 		this.menuItemExit.Size = new System.Drawing.Size(172, 24);
 		this.menuItemExit.Text = "&Exit";
 		this.menuItemExit.Click += new System.EventHandler(this.menuItemExit_Click);
-		base.AccessibleName = "Peacock Patcher";
+		base.AccessibleName = "Peacock";
 		base.AutoScaleDimensions = new System.Drawing.SizeF(8f, 16f);
 		base.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 		this.BackColor = System.Drawing.SystemColors.Control;
@@ -495,7 +509,7 @@ public class MainForm : Form, ILoggingProvider
 		base.MaximizeBox = false;
 		this.MinimumSize = new System.Drawing.Size(423, 238);
 		base.Name = "MainForm";
-		this.Text = "Peacock Patcher";
+		this.Text = "Peacock";
 		base.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
 		base.Resize += new System.EventHandler(this.MainForm_Resize);
 		this.logContextMenu.ResumeLayout(false);

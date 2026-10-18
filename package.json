@@ -2,11 +2,13 @@
   "name": "peacock-recovered",
   "version": "0.0.0",
   "private": true,
-  "description": "Recovered Peacock server, browser interface, and Windows patcher",
+  "description": "Combined C# Peacock application with managed server and patcher",
   "scripts": {
     "setup": "npm ci --prefix tools",
     "build": "powershell -NoProfile -File build.ps1",
     "start": "powershell -NoProfile -File run.ps1",
-    "check": "node --check src/server/index.js && node --check src/webui/assets/app.js"
+    "check": "node --check src/Peacock/Server/index.js && node --check src/Peacock/WebUI/assets/app.js",
+    "test": "powershell -NoProfile -File tests/ServerHost.Tests.ps1 -Integration",
+    "build:server": "node tools/compile-server.cjs"
   }
 }

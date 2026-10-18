@@ -1,0 +1,8 @@
+{
+  "format": "Node.js SEA with V8 code cache",
+  "platform": "win32-x64",
+  "nodeVersion": "22.18.0",
+  "inputsSha256": "56f7037dacfa88691b034ec3d23009d29653e6b6f2b34a1506f8a4b770ff1c86",
+  "executableSha256": "76034c2d8a0ab48d53d8b9b5d6d041a0e3e55c217466736c65ab72dac1d9b19e",
+  "executableBytes": 100221952
+}

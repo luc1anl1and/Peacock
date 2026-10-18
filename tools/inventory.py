@@ -9,7 +9,7 @@ for p in sorted(root.rglob('*')):
         b=p.read_bytes()
         entries.append({'path':p.relative_to(root).as_posix(),'bytes':len(b),'sha256':hashlib.sha256(b).hexdigest()})
 Path('docs/recovery/input-manifest.json').write_text(json.dumps(entries,indent=2)+'\n',encoding='utf8')
-report={'originalFiles':len(entries),'originalBytes':sum(x['bytes'] for x in entries),'extensions':dict(Counter(Path(x['path']).suffix or '(none)' for x in entries)),'decodedResourcePackages':len(list(Path('data').rglob('*.json'))),'csharpFiles':len([p for p in Path('src/patcher').rglob('*.cs') if 'obj' not in p.parts]),'portableExecutables':[]}
+report={'originalFiles':len(entries),'originalBytes':sum(x['bytes'] for x in entries),'extensions':dict(Counter(Path(x['path']).suffix or '(none)' for x in entries)),'decodedResourcePackages':len(list(Path('data').rglob('*.json'))),'csharpFiles':len([p for p in Path('src/Peacock').rglob('*.cs') if 'obj' not in p.parts]),'portableExecutables':[]}
 for name in ['PeacockPatcher.exe','nodedist/node.exe']:
     b=(root/name).read_bytes(); pe=struct.unpack_from('<I',b,60)[0]; opt=pe+24
     directory=opt+(112 if struct.unpack_from('<H',b,opt)[0]==0x20b else 96)

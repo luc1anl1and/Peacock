@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <AssemblyName>PeacockPatcher</AssemblyName>
+    <AssemblyName>Peacock</AssemblyName>
     <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
     <OutputType>WinExe</OutputType>
     <UseWindowsForms>True</UseWindowsForms>
@@ -30,5 +30,20 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Core" />
+    <None Remove="Server\Embedded\Peacock.Server.bytes" />
+    <EmbeddedResource Include="Server\Embedded\Peacock.Server.bytes" LogicalName="Peacock.Server.bytes" />
   </ItemGroup>
+  <Target Name="CompileEmbeddedServer" BeforeTargets="PrepareForBuild">
+    <Exec WorkingDirectory="$(MSBuildProjectDirectory)\..\.." Command="npm.cmd ci --prefix tools" Condition="!Exists('$(MSBuildProjectDirectory)\..\..\tools\node_modules\postject')" />
+    <Exec WorkingDirectory="$(MSBuildProjectDirectory)\..\.." Command="node tools/compile-server.cjs" />
+  </Target>
+  <ItemGroup>
+    <None Update="Server\**\*;WebUI\**\*" />
+    <None Include="..\..\data\**\*.json" Link="Data\%(RecursiveDir)%(Filename)%(Extension)" />
+    <None Include="..\..\config\options.ini" Link="Configuration\options.ini" />
+  </ItemGroup>
+  <Target Name="PackageApplication" AfterTargets="Build" Condition="'$(SkipPackaging)' != 'true'">
+    <Exec WorkingDirectory="$(MSBuildProjectDirectory)\..\.." Command="npm.cmd ci --prefix tools" Condition="!Exists('$(MSBuildProjectDirectory)\..\..\tools\node_modules\msgpackr')" />
+    <Exec WorkingDirectory="$(MSBuildProjectDirectory)\..\.." Command="node tools/assemble.cjs $(Configuration)" />
+  </Target>
 </Project>

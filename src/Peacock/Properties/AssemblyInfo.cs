@@ -9,6 +9,6 @@ using System.Runtime.Versioning;
 [assembly: AssemblyDescription("Peacock's HITMAN™ World of Assassination trilogy game patcher.")]
 [assembly: AssemblyFileVersion("9.0.1.0")]
 [assembly: AssemblyInformationalVersion("1.0.0+0fc8e648e2d4fac3aff4b47d98aac034624987cf")]
-[assembly: AssemblyProduct("Peacock Patcher")]
-[assembly: AssemblyTitle("PeacockPatcher")]
+[assembly: AssemblyProduct("Peacock")]
+[assembly: AssemblyTitle("Peacock")]
 [assembly: AssemblyVersion("9.0.1.0")]

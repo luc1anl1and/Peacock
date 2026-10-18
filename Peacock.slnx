@@ -1,6 +1,3 @@
 <Solution>
-  <Folder Name="/src/" />
-  <Folder Name="/src/patcher/">
-    <Project Path="src/patcher/PeacockPatcher.csproj" />
-  </Folder>
+  <Project Path="src/Peacock/Peacock.csproj" />
 </Solution>

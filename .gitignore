@@ -13,6 +13,8 @@ node_modules/
 
 # Generated application distributions
 /dist/
+/artifacts/
+/docs/recovery/original-patcher/
 
 # Player profiles, account mappings, sessions, and logs
 userdata/

@@ -1,5 +1,5 @@
 {
-  "bundle": "../../../src/webui/assets/app.js",
+  "bundle": "../../../src/Peacock/WebUI/assets/app.js",
   "symbols": [
     {
       "name": "mh",

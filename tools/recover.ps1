@@ -7,7 +7,7 @@ try {
         & dotnet tool install ilspycmd --version 11.1.0.9782 --tool-path tools/dotnet
         if ($LASTEXITCODE) { throw 'ILSpy installation failed' }
     }
-    & tools/dotnet/ilspycmd.exe -p -o src/patcher vendor/original/PeacockPatcher.exe
+    & tools/dotnet/ilspycmd.exe -p -o docs/recovery/original-patcher vendor/original/PeacockPatcher.exe
     if ($LASTEXITCODE) { throw 'C# decompilation failed' }
     foreach ($script in @('format.cjs', 'unpack-resources.cjs', 'index-and-verify.cjs')) {
         & node (Join-Path tools $script)
@@ -15,6 +15,6 @@ try {
     }
     & python tools/inventory.py
     if ($LASTEXITCODE) { throw 'Inventory failed' }
-    & dotnet build src/patcher/PeacockPatcher.csproj --nologo
+    & dotnet build docs/recovery/original-patcher/PeacockPatcher.csproj --nologo
     if ($LASTEXITCODE) { throw 'Patcher build failed' }
 } finally { Pop-Location }
