@@ -1,0 +1,34 @@
+{
+  "originalFiles": 4319,
+  "originalBytes": 266302744,
+  "extensions": {
+    "(none)": 2,
+    ".js": 2,
+    ".jpg": 4135,
+    ".png": 35,
+    ".exe": 2,
+    ".ini": 1,
+    ".txt": 2,
+    ".prp": 133,
+    ".rpkg": 3,
+    ".cmd": 2,
+    ".css": 1,
+    ".html": 1
+  },
+  "decodedResourcePackages": 133,
+  "csharpFiles": 37,
+  "portableExecutables": [
+    {
+      "path": "PeacockPatcher.exe",
+      "machine": "0x8664",
+      "managed": true,
+      "clrDirectoryRva": 8192
+    },
+    {
+      "path": "nodedist/node.exe",
+      "machine": "0x8664",
+      "managed": false,
+      "clrDirectoryRva": 0
+    }
+  ]
+}

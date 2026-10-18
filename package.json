@@ -1,0 +1,12 @@
+{
+  "name": "peacock-recovered",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Recovered Peacock server, browser interface, and Windows patcher",
+  "scripts": {
+    "setup": "npm ci --prefix tools",
+    "build": "powershell -NoProfile -File build.ps1",
+    "start": "powershell -NoProfile -File run.ps1",
+    "check": "node --check src/server/index.js && node --check src/webui/assets/app.js"
+  }
+}

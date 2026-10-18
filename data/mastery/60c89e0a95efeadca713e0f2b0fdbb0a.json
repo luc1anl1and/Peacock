@@ -1,0 +1,11 @@
+{
+  "LocationId": "LOCATION_PARENT_ICA_FACILITY",
+  "GameVersions": [
+    "h1",
+    "h2",
+    "h3"
+  ],
+  "MaxLevel": 4,
+  "HideProgression": true,
+  "Drops": []
+}

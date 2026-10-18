@@ -1,0 +1,27 @@
+{
+  "javascript": [
+    {
+      "file": "src/server/index.js",
+      "canonicalEquivalent": true,
+      "symbols": 1472,
+      "parts": 7
+    },
+    {
+      "file": "src/webui/assets/app.js",
+      "canonicalEquivalent": true,
+      "symbols": 689,
+      "parts": 3
+    }
+  ],
+  "layout": "src, data, config, vendor/original, dist/Peacock",
+  "resourcePackagesVerified": 133,
+  "existingSettingsPreserved": true,
+  "existingUserdataPreserved": true,
+  "originalHashesVerified": 4319,
+  "patcherBuild": {
+    "configuration": "Release",
+    "errors": 0,
+    "warnings": 2
+  },
+  "applicationExecuted": false
+}

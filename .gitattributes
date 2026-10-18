@@ -1,0 +1,22 @@
+# Normalize maintained text files.
+* text=auto
+*.md text eol=lf
+*.js text eol=lf
+*.cjs text eol=lf
+*.json text eol=lf
+*.py text eol=lf
+*.ps1 text eol=crlf
+*.cmd text eol=crlf
+*.cs text eol=crlf
+
+# Preserve original distribution bytes for manifest verification.
+/vendor/original/** -text
+
+# Compiled assets and embedded resources.
+*.exe binary
+*.dll binary
+*.png binary
+*.jpg binary
+*.ico binary
+*.prp binary
+*.rpkg binary

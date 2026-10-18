@@ -1,0 +1,40 @@
+# Installed dependencies and local decompiler
+node_modules/
+/tools/dotnet/
+
+# .NET build outputs and IDE state
+**/bin/
+**/obj/
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Generated application distributions
+/dist/
+
+# Player profiles, account mappings, sessions, and logs
+userdata/
+contractSessions/
+logs/
+*.log
+
+# Local environment and credentials
+.env
+.env.*
+!.env.example
+!.env.sample
+
+# Python caches
+__pycache__/
+*.py[cod]
+.venv/
+
+# Editor and operating-system temporary files
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+Desktop.ini

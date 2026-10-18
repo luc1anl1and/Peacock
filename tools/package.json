@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@babel/generator": "^8.0.6",
+    "@babel/parser": "^8.0.7",
+    "msgpackr": "^2.1.0",
+    "prettier": "^3.9.10"
+  }
+}
